@@ -24,7 +24,7 @@ VariableBreakpointExperiment class >> resetExperiment [
 VariableBreakpointExperiment class >> tasks [
 
 	| dir tasks |
-	dir := self tasksDirectory / 'mic'.
+	dir := self tasksDirectory location / 'mic'.
 	tasks := OrderedCollection new.
 	tasks add: (PhexTask new
 			 name: 'Warm-up';
