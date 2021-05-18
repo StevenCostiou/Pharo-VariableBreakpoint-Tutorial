@@ -4,13 +4,6 @@ Class {
 	#category : #'VariableBreakpoint-Experiment'
 }
 
-{ #category : #running }
-VariableBreakpointExperiment class >> runExperiment [
-	<script>
-	
-	
-]
-
 { #category : #accessing }
 VariableBreakpointExperiment class >> tasks [
 
