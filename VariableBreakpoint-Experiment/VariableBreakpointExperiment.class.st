@@ -1,8 +1,23 @@
 Class {
 	#name : #VariableBreakpointExperiment,
 	#superclass : #PhexExperiment,
+	#classInstVars : [
+		'currentExperiment'
+	],
 	#category : #'VariableBreakpoint-Experiment'
 }
+
+{ #category : #accessing }
+VariableBreakpointExperiment class >> currentExperiment [
+	^currentExperiment ifNil:[currentExperiment := self new]
+]
+
+{ #category : #initialization }
+VariableBreakpointExperiment class >> resetExperiment [
+
+	<script>
+	currentExperiment := nil
+]
 
 { #category : #accessing }
 VariableBreakpointExperiment class >> tasks [
