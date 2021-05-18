@@ -1,11 +1,11 @@
 Class {
-	#name : #BaselineOfPharoVariableBreakpointTutorial,
+	#name : #BaselineOfPharoVariableBreakpointExperiment,
 	#superclass : #BaselineOf,
-	#category : #'BaselineOfPharo-VariableBreakpoint-Tutorial'
+	#category : #BaselineOfPharoVariableBreakpointExperiment
 }
 
 { #category : #baselines }
-BaselineOfPharoVariableBreakpointTutorial >> baseline: spec [
+BaselineOfPharoVariableBreakpointExperiment >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [ 
