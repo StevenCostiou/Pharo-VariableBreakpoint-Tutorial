@@ -11,7 +11,7 @@ BaselineOfPharoVariableBreakpointExperiment >> baseline: spec [
 	spec for: #common do: [ 
 		spec
 			baseline: 'Phex'
-			with: [ spec repository: 'github://StevenCostiou/Phex' ].
+			with: [ spec repository: 'github://StevenCostiou/Phex:main' ].
 		spec package: 'VariableBreakpoint-Tutorial'.
 		spec package: 'VariableBreakpoint-Experiment' ]
 ]
