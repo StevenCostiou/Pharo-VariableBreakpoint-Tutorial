@@ -2,7 +2,8 @@ Class {
 	#name : #VariableBreakpointExperiment,
 	#superclass : #PhexExperiment,
 	#classInstVars : [
-		'currentExperiment'
+		'currentExperiment',
+		'tasksDirectory'
 	],
 	#category : #'VariableBreakpoint-Experiment'
 }
@@ -22,14 +23,26 @@ VariableBreakpointExperiment class >> resetExperiment [
 { #category : #accessing }
 VariableBreakpointExperiment class >> tasks [
 
-	| tasks |
+	| dir tasks |
+	dir := self tasksDirectory / 'mic'.
 	tasks := OrderedCollection new.
 	tasks add: (PhexTask new
 			 name: 'Warm-up';
 			 description: 'In this task, you will train to use variable breakpoints.';
-			 contents: 'vb-tutorial.mic' asFileReference contents;
+			 contents: (dir / 'vb-tutorial.mic') contents;
 			 yourself).
 	^ tasks
+]
+
+{ #category : #accessing }
+VariableBreakpointExperiment class >> tasksDirectory [
+
+	^ tasksDirectory ifNil: [ 
+		  tasksDirectory := IceRepository repositories detect: [ :d | 
+			                    d location notNil and: [ 
+				                    d origin owner = 'StevenCostiou' and: [ 
+					                    d origin projectName
+					                    = 'PharoVariableBreakpointExperiment' ] ] ] ]
 ]
 
 { #category : #initialization }
