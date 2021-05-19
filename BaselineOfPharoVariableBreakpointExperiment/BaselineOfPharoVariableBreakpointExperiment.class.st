@@ -15,7 +15,7 @@ BaselineOfPharoVariableBreakpointExperiment >> baseline: spec [
 		spec
 			baseline: 'BreakpointNavigator'
 			with: [ 
-			spec repository: 'github://StevenCostiou/BreakpointNavigator' ].
+			spec repository: 'github://StevenCostiou/BreakpointNavigator:main' ].
 		spec package: 'VariableBreakpoint-Tutorial'.
 		spec package: 'VariableBreakpoint-Experiment' ]
 ]
