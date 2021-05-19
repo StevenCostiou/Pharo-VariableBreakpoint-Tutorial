@@ -12,6 +12,10 @@ BaselineOfPharoVariableBreakpointExperiment >> baseline: spec [
 		spec
 			baseline: 'Phex'
 			with: [ spec repository: 'github://StevenCostiou/Phex:main' ].
+		spec
+			baseline: 'BreakpointNavigator'
+			with: [ 
+			spec repository: 'github://StevenCostiou/BreakpointNavigator' ].
 		spec package: 'VariableBreakpoint-Tutorial'.
 		spec package: 'VariableBreakpoint-Experiment' ]
 ]
