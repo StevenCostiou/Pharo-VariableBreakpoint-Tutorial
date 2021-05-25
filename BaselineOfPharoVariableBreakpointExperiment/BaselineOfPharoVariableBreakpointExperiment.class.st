@@ -16,6 +16,10 @@ BaselineOfPharoVariableBreakpointExperiment >> baseline: spec [
 			baseline: 'BreakpointNavigator'
 			with: [ 
 			spec repository: 'github://StevenCostiou/BreakpointNavigator:main' ].
+		spec
+			baseline: 'SwarmDebugging'
+			with: [ 
+			spec repository: 'github://SwarmDebugging/SwarmDbgPharo:master' ].
 		spec package: 'VariableBreakpoint-Tutorial'.
 		spec package: 'VariableBreakpoint-Experiment' ]
 ]
