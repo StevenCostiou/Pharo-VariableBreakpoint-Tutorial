@@ -50,10 +50,28 @@ VariableBreakpointExperiment >> initialize [
 	super initialize.
 	name := 'Variable Breakpoints'.
 	description := 'An empirical debugging experiment about the effectiveness of variable breakpoints.'.
-	tasks := self class tasks
+	tasks := self class tasks.
+	startingTaskAction := [ :xp :task| self startSwarmSessionForTask: task inProject: xp].
+	finishTaskAction := [ :xp :task| SessionService endCurrentSession].
 ]
 
 { #category : #testing }
 VariableBreakpointExperiment >> sequentialTasks [
 	^true
+]
+
+{ #category : #private }
+VariableBreakpointExperiment >> startSwarmSessionForTask: task inProject: xp [
+
+	| windowProperty |
+	windowProperty := WindowProperty new
+		                  projectName: xp name;
+		                  developerName:
+			                  SessionService developerID printString;
+		                  taskName: task name;
+		                  taskAction: 'SearchingBug';
+		                  taskDescription: task description.
+
+	SessionService setSwarmWindowData: windowProperty.
+	SessionService registerNewSession
 ]
