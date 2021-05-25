@@ -52,3 +52,8 @@ VariableBreakpointExperiment >> initialize [
 	description := 'An empirical debugging experiment about the effectiveness of variable breakpoints.'.
 	tasks := self class tasks
 ]
+
+{ #category : #testing }
+VariableBreakpointExperiment >> sequentialTasks [
+	^true
+]
