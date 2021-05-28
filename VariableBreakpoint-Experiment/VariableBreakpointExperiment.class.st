@@ -28,7 +28,15 @@ VariableBreakpointExperiment class >> tasks [
 	tasks := OrderedCollection new.
 	tasks add: (PhexTask new
 			 name: 'Warm-up';
-			 description: 'In this task, you will train to use variable breakpoints.';
+			 description:
+				 'In this task, you will train to use variable breakpoints.';
+			 contents: (dir / 'vb-tutorial.mic') contents;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Task 2';
+			 description: 'Sample task.';
+			 requiredAnswer: 'You must answer the number of whatever';
+			 requiresAnswer: true;
 			 contents: (dir / 'vb-tutorial.mic') contents;
 			 yourself).
 	^ tasks
@@ -43,6 +51,11 @@ VariableBreakpointExperiment class >> tasksDirectory [
 				                    d origin owner = 'StevenCostiou' and: [ 
 					                    d origin projectName
 					                    = 'PharoVariableBreakpointExperiment' ] ] ] ]
+]
+
+{ #category : #accessing }
+VariableBreakpointExperiment >> experienceId [
+	^'swarm-vb-experiment'
 ]
 
 { #category : #initialization }
