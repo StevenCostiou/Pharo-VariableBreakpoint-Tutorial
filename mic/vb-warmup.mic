@@ -1,0 +1,57 @@
+# Variable breakpoints: warmup
+## Summary
+
+Errors in two unit tests prevent them to pass.
+Our task is to debug these tests, and for that we will use variable breakpoints.
+
+This task is a warmup task. It is therefore voluntarily simplistic, but you will try to debug it with variable breakpoints as if it was a real task.
+
+## Part I - finding where a variable is put to nil
+
+When executing the test `VBTAlignmentTest>>#testFailingAlignment`, there is an error that prevents the test to pass.
+Let's execute this test.
+The test is interrupted by the following error: `#isEmpty was sent to nil` while executing the `hasShape` method.
+You should see the following code in your debugger:
+
+![breakpoint-nav](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/isEmpty-sent-to-nil.png)
+
+The current receiver is an instance of `VBTAlignment` and it seems its `shapes` instance variable is nil while it should not.
+If you look at the sender context in the stack (`#testFailingAlignment`), you see that this error happens at the end of the failing test, when the tested
+ instance of `VTBAlignment` receives the `#hasShape` message.
+ Notice that this instance received the `#hasShape` message two times before the bug occurs, which suggest that its `shapes` instance variable was set to `nil` somewhere during this test.
+
+ Let us track all changes to the `shapes` instance variable of `VBTAlignment` are written to:
+ * Close the debugger
+ * Browse the `VBTAlignment` class
+ * Select the _var_ view (in the toolbar just above the code pane)
+
+  ![var-view](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/var-view.png)
+
+ * Select the `shapes` instance variable and break on all writes to this variable
+ * Execute the test again, and proceed until you find the error.
+
+Once you found the error, click on finish the task, write up your correction in the text area, and terminate the task. This action cannot be reverted.
+
+## Part II - finding where a particular object state is modified
+When executing the test `VBTAlignmentTest>>#testSingleObjectFailingAlignment`, there is an failing assertion that prevents the test to pass.
+Let's execute this test. You should see a debugger:
+
+![test-failure](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/has-shapes-failure.png)
+
+As we can see, there are two instances of `VBTAlignment2` created at the beggining.
+The first two assertions pass, and show that after initialization none of these instances have shapes.
+
+Then the message `addRandomShapes` is sent to both objects.
+The test fails because the second objects answers `false` to the  `hasShape` message, despite the fact that we just added random shapes to that object!
+
+Only the `align2` object is buggy, and not `align1`.
+To understand why the `shapes` instance variable of that particular object does not have the correct value, let us install a variable breakpoint on the `shapes` instance variable but scoped to the `align2` instance:
+* Restart the test
+* Step over the first two assignments, so that `align1` and `align2` are instantiated
+* Inspect the `align2` object, right-click on its `shapes` variable and select `halt on write`
+* Proceed the test
+
+The execution will break when the `shapes` instance variable of the specific object `align2` is written to, and you can navigate the stack to find the problem and fix the test!
+
+Notice that it does not break for writes to the `shapes` instance variable of `align1`.
+The variable breakpoint we installed is scoped to the `align2` object because we defined it from an inspector opened on that object.
