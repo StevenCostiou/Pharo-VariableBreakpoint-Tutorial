@@ -1,1 +1,33 @@
-# Variable breakpoints: warmup## SummaryAn error in a unit tests prevent this test to pass.In this test, we test an object whose state seems to be erratic.Our task is to debug this test,  and for that we will use variable breakpoints to investigate when the state of the buggy object is modified.## Finding where a variable is put to nilWhen executing the test `VBTAlignmentTest>>#testFailingAlignment`, there is an error that prevents the test to pass.Let's execute this test.The test is interrupted by the following error: `#isEmpty was sent to nil` while executing the `hasShape` method.You should see the following code in your debugger:![breakpoint-nav](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/isEmpty-sent-to-nil.png)The current receiver is an instance of `VBTAlignment` and it seems its `shapes` instance variable is nil while it should not.If you look at the sender context in the stack (`#testFailingAlignment`), you see that this error happens at the end of the failing test, when the tested instance of `VTBAlignment` receives the `#hasShape` message. Notice that this instance received the `#hasShape` message two times before the bug occurs, which suggest that its `shapes` instance variable was set to _nil_ somewhere during this test. Let us track all changes to the `shapes` instance variable of `VBTAlignment` are written to: * Close the debugger * Browse the `VBTAlignment` class * Select the _var_ view (in the toolbar just above the code pane)  ![var-view](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/var-view.png) * Select the `shapes` instance variable and break on all writes to this variable. This breakpoint will be active for all instances of the `VBTAlignment` class. * Execute the test again, and proceed until you find the error.Once you found the error, click on finish the task, write up your correction in the text area, and terminate the task. This action cannot be reverted.
+# Warmup: variable breakpoints
+
+## Summary
+
+An error in a unit tests prevent this test to pass.
+In this test, we test an object whose state seems to be erratic.
+Our task is to debug this test,  and for that we will use variable breakpoints to investigate when the state of the buggy object is modified.
+
+## Finding where a variable is put to nil
+
+When executing the test `VBTAlignmentTest>>#testFailingAlignment`, there is an error that prevents the test to pass.
+Let's execute this test.
+The test is interrupted by the following error: `#isEmpty was sent to nil` while executing the `hasShape` method.
+You should see the following code in your debugger:
+
+![breakpoint-nav](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/isEmpty-sent-to-nil.png)
+
+The current receiver is an instance of `VBTAlignment` and it seems its `shapes` instance variable is nil while it should not.
+If you look at the sender context in the stack (`#testFailingAlignment`), you see that this error happens at the end of the failing test, when the tested
+ instance of `VTBAlignment` receives the `#hasShape` message.
+ Notice that this instance received the `#hasShape` message two times before the bug occurs, which suggest that its `shapes` instance variable was set to _nil_ somewhere during this test.
+
+ Let us track all changes to the `shapes` instance variable of `VBTAlignment` are written to:
+ * Close the debugger
+ * Browse the `VBTAlignment` class
+ * Select the _var_ view (in the toolbar just above the code pane)
+
+  ![var-view](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/var-view.png)
+
+ * Select the `shapes` instance variable and break on all writes to this variable. This breakpoint will be active for all instances of the `VBTAlignment` class.
+ * Execute the test again, and proceed until you find the error.
+
+Once you found the error, click on finish the task, write up your correction in the text area, and terminate the task. This action cannot be reverted.
