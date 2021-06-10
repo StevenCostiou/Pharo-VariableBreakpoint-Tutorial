@@ -27,17 +27,26 @@ VariableBreakpointExperiment class >> tasks [
 	dir := self tasksDirectory location / 'mic'.
 	tasks := OrderedCollection new.
 	tasks add: (PhexTask new
-			 name: 'Warm-up';
-			 description:
-				 'In this task, you will train to use variable breakpoints.';
+			 name: 'Tutorial';
+			 description: 'Sample task.';
+			 requiresAnswer: false;
 			 contents: (dir / 'vb-tutorial.mic') contents;
 			 yourself).
 	tasks add: (PhexTask new
-			 name: 'Task 2';
-			 description: 'Sample task.';
-			 requiredAnswer: 'You must answer the number of whatever';
+			 name: 'Warm-up 1';
+			 description:
+				 'In this task, you will train to use variable breakpoints.';
 			 requiresAnswer: true;
-			 contents: (dir / 'vb-tutorial.mic') contents;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-warmup.mic') contents;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Warm-up 2';
+			 description:
+				 'In this task, you will train to use variable breakpoints.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-warmup-2.mic') contents;
 			 yourself).
 	^ tasks
 ]
