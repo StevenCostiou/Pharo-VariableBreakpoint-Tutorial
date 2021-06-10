@@ -1,4 +1,7 @@
-# PharoVariableBreakpointExperiment
+# For participants:
+
+
+# For developers only:
 
 ```Smalltalk
 Metacello new
