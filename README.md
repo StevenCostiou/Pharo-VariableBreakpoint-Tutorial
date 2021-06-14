@@ -12,6 +12,7 @@
 
 5. Click _Load Experience_ then select _VariableBreakpointExperiment_
 6. The tasks are now displayed and you can select the first one and click "start"
+
 ![phex-tasks](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/phex-tasks.png)
 
 
