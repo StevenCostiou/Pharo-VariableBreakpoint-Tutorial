@@ -31,6 +31,7 @@ VariableBreakpointExperiment class >> tasks [
 			 description: 'Sample task.';
 			 requiresAnswer: false;
 			 contents: (dir / 'vb-tutorial.mic') contents;
+			 alwaysDisplayDescription: true;
 			 yourself).
 	tasks add: (PhexTask new
 			 name: 'Warm-up 1';
