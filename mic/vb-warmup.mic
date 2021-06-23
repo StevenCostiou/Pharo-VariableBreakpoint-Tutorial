@@ -8,8 +8,12 @@ Our task is to debug this test,  and for that we will use variable breakpoints t
 
 ## Finding where a variable is put to nil
 
-When executing the test `VBTAlignmentTest>>#testFailingAlignment`, there is an error that prevents the test to pass.
-Let's execute this test.
+When executing a test, there is an error that prevents the test to pass.
+
+Let's execute this test: browse the test by clicking on `VBTAlignmentTest>>#testFailingAlignment` then click on the gray bubble as shown in the picture below. If that bubble turns green, the test passed. If it turns red, the test fails.
+
+![exec-test](https://github.com/StevenCostiou/Pharo-VariableBreakpoint-Tutorial/raw/main/pictures/executing-test.png)
+
 The test is interrupted by the following error: `#isEmpty was sent to nil` while executing the `hasShape` method.
 You should see the following code in your debugger:
 
