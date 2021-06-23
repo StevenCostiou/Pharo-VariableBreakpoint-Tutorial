@@ -74,7 +74,10 @@ VariableBreakpointExperiment >> initialize [
 	description := 'An empirical debugging experiment about the effectiveness of variable breakpoints.'.
 	tasks := self class tasks.
 	startingTaskAction := [ :xp :task| self startSwarmSessionForTask: task inProject: xp].
-	finishTaskAction := [ :xp :task| SessionService endCurrentSession]
+	finishTaskAction := [ :xp :task| 
+		SessionService endCurrentSession.		
+		Breakpoint removeAll.
+		VariableBreakpoint removeAll]
 ]
 
 { #category : #testing }
