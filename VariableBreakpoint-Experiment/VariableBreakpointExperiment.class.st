@@ -27,14 +27,32 @@ VariableBreakpointExperiment class >> tasks [
 	dir := self tasksDirectory location / 'mic'.
 	tasks := OrderedCollection new.
 	tasks add: (PhexTask new
-			 name: 'Tutorial';
-			 description: 'Sample task.';
+			 name: 'Tutorial - Introduction';
+			 description: 'This tutorial introduces variable breakpoints and associated tools.';
 			 requiresAnswer: false;
 			 contents: (dir / 'vb-tutorial.mic') contents;
 			 alwaysDisplayDescription: true;
 			 yourself).
 	tasks add: (PhexTask new
-			 name: 'Warm-up 1';
+			 name: 'Tutorial - Exercise 1';
+			 description:
+				 'In this task, you will train to use variable breakpoints to find where an instance variable is set to nil.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-tutorial-exo-1.mic') contents;
+			 alwaysDisplayDescription: true;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Tutorial - Exercise 2';
+			 description:
+				 'In this task, you will train to use object-centric variable breakpoints to find where the state of a particular object is modified.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-tutorial-exo-2.mic') contents;
+			 alwaysDisplayDescription: true;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Warmup';
 			 description:
 				 'In this task, you will train to use variable breakpoints.';
 			 requiresAnswer: true;
@@ -42,12 +60,36 @@ VariableBreakpointExperiment class >> tasks [
 			 contents: (dir / 'vb-warmup.mic') contents;
 			 yourself).
 	tasks add: (PhexTask new
-			 name: 'Warm-up 2';
+			 name: 'Task 1.a - program comprehension';
 			 description:
 				 'In this task, you will train to use variable breakpoints.';
 			 requiresAnswer: true;
 			 requiredAnswer: 'What was the reason of the bug?';
-			 contents: (dir / 'vb-warmup-2.mic') contents;
+			 contents: (dir / 'vb-1a.mic') contents;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Task 1.b - program comprehension';
+			 description:
+				 'In this task, you will train to use variable breakpoints.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-1b.mic') contents;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Task 2.a - the HTML exporter bug';
+			 description:
+				 'In this task, you have to understand a bug in an HTML exporter.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-2a.mic') contents;
+			 yourself).
+	tasks add: (PhexTask new
+			 name: 'Task 2.b - the Microdown comment bug';
+			 description:
+				 'In this task, you have to understand a bug in the Pharo class comment system.';
+			 requiresAnswer: true;
+			 requiredAnswer: 'What was the reason of the bug?';
+			 contents: (dir / 'vb-2b.mic') contents;
 			 yourself).
 	^ tasks
 ]
