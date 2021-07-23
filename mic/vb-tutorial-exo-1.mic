@@ -1,10 +1,12 @@
-# Warmup: variable breakpoints
+# Exercise: debugging with variable breakpoints
 
 ## Summary
 
 An error in a unit tests prevent this test to pass.
 In this test, we test an object whose state seems to be erratic.
 Our task is to debug this test,  and for that we will use variable breakpoints to investigate when the state of the buggy object is modified.
+
+This task is an exercise. It is therefore voluntarily simplistic, but you will try to debug it with variable breakpoints as if it was a real task.
 
 ## Finding where a variable is put to nil
 
